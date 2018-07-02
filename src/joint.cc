@@ -504,6 +504,12 @@ namespace hpp {
         liegroupType_ = LiegroupType (tmp);
       }
 
+      void operator () (se3::JointModelFreeFlyer&)
+      {
+        se3::SpecialEuclideanOperation<3> tmp;
+        liegroupType_ = LiegroupType (tmp);
+      }
+
       void operator () (se3::JointModelComposite&)
       {
         assert (false && "Method Joint::configurationSpace is not implemented "

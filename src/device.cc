@@ -269,6 +269,14 @@ namespace hpp {
 
     };
 
+    template<>
+    void ConfigSpaceVisitor::algo<se3::JointModelFreeFlyer>(
+        const se3::JointModelBase<se3::JointModelFreeFlyer> &,
+        LiegroupSpace& space)
+    {
+      space *= LiegroupSpace::create (se3::SpecialEuclideanOperation<3>());
+    }
+
     template <>
     void ConfigSpaceVisitor::algo<se3::JointModelComposite>(
         const se3::JointModelBase<se3::JointModelComposite> & jmodel,
