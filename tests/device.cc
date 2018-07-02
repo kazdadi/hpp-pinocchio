@@ -23,6 +23,7 @@
 #include <hpp/pinocchio/simple-device.hh>
 #include <hpp/pinocchio/humanoid-robot.hh>
 #include <hpp/pinocchio/urdf/util.hh>
+#include <hpp/pinocchio/liegroup-space.hh>
 
 static bool verbose = true;
 
@@ -49,6 +50,8 @@ BOOST_AUTO_TEST_CASE (computeAABB)
 {
   DevicePtr_t robot = makeDeviceSafe(unittest::HumanoidRomeo);
   BOOST_REQUIRE(robot);
+
+  std::cout << *robot->configSpace() << std::endl;
 
   robot->rootJoint()->lowerBounds(vector3_t::Constant(-0));
   robot->rootJoint()->upperBounds(vector3_t::Constant( 0));
